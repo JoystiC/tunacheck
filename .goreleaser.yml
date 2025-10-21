@@ -1,3 +1,4 @@
+version: 2
 project_name: tunacheck
 
 before:
@@ -26,7 +27,7 @@ checksum:
 
 brews:
   - name: tunacheck
-    repository:
+    tap:
       owner: JoystiC
       name: homebrew-tap
     folder: Formula
