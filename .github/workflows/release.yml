@@ -25,11 +25,6 @@ jobs:
       - name: Install dependencies
         run: go mod tidy
 
-      - name: Set up Homebrew tap credentials
-        if: ${{ secrets.GITHUB_TOKEN != '' }}
-        run: |
-          echo "Using default GitHub token for tap commits"
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
