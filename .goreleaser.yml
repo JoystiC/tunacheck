@@ -29,7 +29,7 @@ brews:
     repository:
       owner: JoystiC
       name: homebrew-tap
-    directory: Formula
+    folder: Formula
     commit_author:
       name: release-bot
       email: noreply@users.noreply.github.com
