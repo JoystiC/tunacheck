@@ -1,0 +1,60 @@
+{
+  "headers": {
+    "Strict-Transport-Security": {
+      "recommended_value": "max-age=63072000; includeSubDomains; preload",
+      "rationale": "Enforces HTTPS and enables preload for stronger transport security.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security"
+      ]
+    },
+    "Content-Security-Policy": {
+      "recommended_value": "default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests",
+      "rationale": "Restricts sources to mitigate XSS and related attacks.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/CSP"
+      ]
+    },
+    "X-Frame-Options": {
+      "recommended_value": "DENY",
+      "rationale": "Prevents clickjacking by disallowing framing.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options"
+      ]
+    },
+    "X-Content-Type-Options": {
+      "recommended_value": "nosniff",
+      "rationale": "Prevents MIME-type sniffing reducing XSS risk.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options"
+      ]
+    },
+    "Referrer-Policy": {
+      "recommended_value": "no-referrer",
+      "rationale": "Avoids leaking referrer information across origins.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy"
+      ]
+    },
+    "Permissions-Policy": {
+      "recommended_value": "geolocation=(), microphone=(), camera=()",
+      "rationale": "Disables powerful features by default.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy"
+      ]
+    },
+    "Expect-CT": {
+      "recommended_value": "max-age=86400, enforce",
+      "rationale": "Legacy CT enforcement header (superseded yet still informational).",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/Expect-CT"
+      ]
+    },
+    "Feature-Policy": {
+      "recommended_value": "geolocation 'none'; microphone 'none'; camera 'none'",
+      "rationale": "Legacy alias for Permissions-Policy.",
+      "references": [
+        "https://developer.mozilla.org/docs/Web/HTTP/Headers/Feature-Policy"
+      ]
+    }
+  }
+}

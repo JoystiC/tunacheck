@@ -1,0 +1,61 @@
+project_name: tunacheck
+
+before:
+  hooks:
+    - make guidance
+
+builds:
+  - id: tunacheck
+    main: ./cmd/tunacheck
+    env: [CGO_ENABLED=0]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.ShortCommit}} -X main.buildDate={{.Date}}
+    goos: [linux, darwin]
+    goarch: [amd64, arm64]
+    mod_timestamp: '{{ .CommitTimestamp }}'
+
+archives:
+  - format: tar.gz
+    files:
+      - LICENSE
+    name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}'
+
+checksum:
+  name_template: 'checksums.txt'
+
+brews:
+  - name: tunacheck
+    repository:
+      owner: JoystiC
+      name: homebrew-tap
+    directory: Formula
+    commit_author:
+      name: release-bot
+      email: noreply@users.noreply.github.com
+    homepage: https://github.com/JoystiC/tunacheck
+    description: CLI to check web and TLS security properties
+    license: Apache-2.0
+    test: |
+      system "#{bin}/tunacheck", "version"
+    install: |
+      bin.install "tunacheck"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+release:
+  github:
+    owner: JoystiC
+    name: tunacheck
+  draft: false
+  prerelease: false
+
+snapshot:
+  name_template: SNAPSHOT-{{ .Branch }}-{{ .ShortCommit }}
+
+
